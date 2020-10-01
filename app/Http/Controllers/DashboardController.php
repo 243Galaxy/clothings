@@ -8,15 +8,15 @@ class DashboardController extends BaseController
 {
     public function __construct()
     {
-        
+
     }
 
     public function index(Request $request)
     {
-        if($this->isLoggedIn()){
+        if ($this->isLoggedIn()) {
             return view("admin/dashboard");
-        }else{
-            return redirect('/')->with('warning','Please log in to proceed!');
+        } else {
+            return redirect('/')->with('warning', 'Please log in to proceed!');
         }
     }
 

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClothingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SigninController;
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,20 +41,18 @@ Route::get('a/{id}', [ClothingController::class, 'showa']);
 Route::match(['get', 'post'], '/register', [SigninController::class, 'register']);
 
 
-
 Route::get('/{id}', [GalleryController::class, 'show']);
 
 Route::match(['get', 'post'], '/orderg', [GalleryController::class, 'orderg']);
 
 
-Route::group(array('prefix' => 'admin'), function()
-{
-	Route::get('/dashboard', [DashboardController::class, 'index']);
-	Route::get('/logout', [DashboardController::class, 'logout']);
-	Route::get('/{id}', [ClothingController::class, 'show']);
-	Route::match(['get', 'post'], 'admin/creategallery', [GalleryController::class, 'creategallery']);
-	Route::match(['get', 'post'], '/changepassword', [ProfileController::class, 'changepassword']);
-	Route::match(['get', 'post'], '/updateprofile', [ProfileController::class, 'updateprofile']);
+Route::group(array('prefix' => 'admin'), function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/logout', [DashboardController::class, 'logout']);
+    Route::get('/{id}', [ClothingController::class, 'show']);
+    Route::match(['get', 'post'], 'admin/creategallery', [GalleryController::class, 'creategallery']);
+    Route::match(['get', 'post'], '/changepassword', [ProfileController::class, 'changepassword']);
+    Route::match(['get', 'post'], '/updateprofile', [ProfileController::class, 'updateprofile']);
 });
 
 
